@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syft</title>
+<style>
+  :root{--bg:#0A4BD1;--ink:#fff;--muted:rgba(255,255,255,.8)}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font:18px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased;text-align:center}
+  main{max-width:420px;padding:40px 16px}
+  h1{font-size:40px;margin:0 0 10px;letter-spacing:-.5px}
+  p{color:var(--muted);margin:0 0 22px}
+  a.btn{display:inline-block;background:#fff;color:var(--bg);font-weight:600;text-decoration:none;padding:14px 26px;border-radius:999px}
+</style>
+</head>
+<body>
+<main>
+  <h1 id="t">You're all set.</h1>
+  <p id="m">Thanks for keeping Syft. Head back to Messages and text it anything you want handled.</p>
+  <a class="btn" href="sms:">Back to Messages</a>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.has("canceled")) { document.getElementById("t").textContent = "No problem."; document.getElementById("m").textContent = "Nothing was charged. Whenever you're ready, text Syft \"upgrade\" for a fresh link."; }
+  else if (!q.has("paid")) { document.getElementById("t").textContent = "All done."; document.getElementById("m").textContent = "Your Syft plan is up to date. Head back to Messages anytime."; }
+</script>
+</body>
+</html>
